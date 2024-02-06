@@ -7,5 +7,14 @@
 </head>
 <body>
     Hola Alba, te amo ❤️
+
+    <p>Focus<span id="focus"></span></p>
 </body>
+<script>
+    window.onblur = function() {
+        focused = false;
+        document.getElementById(focus).innerText = 'Fallo'
+    };
+
+</script>
 </html>
