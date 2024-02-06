@@ -10,6 +10,7 @@
 
     <p>Focus<span id="focus"></span></p>
     <p>visibilidad<span id="visibility"></span></p>
+    <p>visibilidad<span id="blur"></span></p>
 </body>
 <script>
     window.onblur = function() {
@@ -50,6 +51,11 @@ function handleVisibilityChange() {
     //document.getElementById('visibility').innerText = 'Fallo'
   }
 }
+
+
+window.addEventListener('blur', function() {
+    document.getElementById('blur').innerText = 'fallo'
+}, false);
 
 document.addEventListener("visibilitychange", handleVisibilityChange, false);
 
