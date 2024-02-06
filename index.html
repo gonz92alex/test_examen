@@ -9,12 +9,49 @@
     Hola Alba, te amo ❤️
 
     <p>Focus<span id="focus"></span></p>
+    <p>visibilidad<span id="visibility"></span></p>
 </body>
 <script>
     window.onblur = function() {
         focused = false;
         document.getElementById('focus').innerText = 'Fallo'
     };
+
+    const displayMediaOptions = {
+  video: {
+    displaySurface: "browser",
+  },
+  audio: {
+    suppressLocalAudioPlayback: false,
+  },
+  preferCurrentTab: false,
+  selfBrowserSurface: "exclude",
+  systemAudio: "include",
+  surfaceSwitching: "include",
+  monitorTypeSurfaces: "include",
+};
+
+async function startCapture(displayMediaOptions) {
+  let captureStream;
+
+  try {
+    captureStream =
+      await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
+  } catch (err) {
+    console.error(`Error: ${err}`);
+  }
+  return captureStream;
+}
+
+function handleVisibilityChange() {
+  if(document.hidden) {
+    document.getElementById('visibility').innerText = 'se fue'
+  } else {
+    //document.getElementById('visibility').innerText = 'Fallo'
+  }
+}
+
+document.addEventListener("visibilitychange", handleVisibilityChange, false);
 
 </script>
 </html>
